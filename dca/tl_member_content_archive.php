@@ -93,7 +93,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 	),
 	'palettes' => array(
 		'__selector__' => array('type'),
-		'default' => '{general_legend},type,title,mid;{publish_legend},published;',
+		'default' => '{general_legend},type,title,mid,teaser;{publish_legend},published;',
 		'tagged' => '{general_legend},type,tag,mid,teaser;{publish_legend},published;'
 	),
 	'fields'   => array
@@ -128,9 +128,9 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 		'mid' => array
 		(
 			'label'           => &$GLOBALS['TL_LANG']['tl_member_content_archive']['mid'],
-			'inputType'       => 'select',
+			'inputType'       => 'tagsinput',
 			'options_callback' => array('tl_member_content_archive', 'getMembersAsOptions'),
-			'eval'            => array('chosen' => true, 'mandatory' => true, 'tl_class' => 'w50'),
+			'eval'            => array('freeInput' => false, 'mandatory' => true, 'tl_class' => 'w50'),
 			'sql'             => "int(10) unsigned NOT NULL default '0'"
 		),
 		'teaser' => array
