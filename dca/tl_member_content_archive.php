@@ -174,7 +174,7 @@ class tl_member_content_archive extends \Backend
 
 	public static function listRecords($arrRow)
 	{
-		return sprintf('<div class="tl_content_left">%s</div>',
+		return sprintf('<div class="tl_content_left" style="padding-left: 20px;">%s</div>',
 				\HeimrichHannot\MemberContentArchives\MemberContentArchives::getLabel($arrRow));
 	}
 
