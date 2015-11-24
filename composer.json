@@ -17,7 +17,8 @@
         "issues":"https://github.com/heimrichhannot/contao-member_content_archives/issues"
     },
     "require": {
-        "contao/core": ">=3.2,<4-dev"
+        "contao/core": ">=3.2,<4-dev",
+        "heimrichhannot/contao-tagsinput": ">=1.0.9"
     },
     "autoload": {
         "classmap": [""]
@@ -30,3 +31,5 @@
         }
     }
 }
+
+
