@@ -1,0 +1,32 @@
+{
+    "name": "heimrichhannot/contao-member_content_archives",
+    "description":"A module that adds the opportunity to assign any amount of content elements to a member categorized by archives and tags.",
+    "keywords":["contao", "member", "content", "module", "developer"],
+    "type": "contao-module",
+    "homepage":"https://github.com/heimrichhannot/contao-member_content_archives",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"Heimrich & Hannot",
+            "email":"digitales@heimrich-hannot.de",
+            "homepage":"http://www.heimrich-hannot.de",
+            "role":"Developer"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/heimrichhannot/contao-member_content_archives/issues"
+    },
+    "require": {
+        "contao/core": ">=3.2,<4-dev"
+    },
+    "autoload": {
+        "classmap": [""]
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/member_content_archives"
+            }
+        }
+    }
+}
