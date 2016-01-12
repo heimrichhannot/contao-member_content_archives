@@ -130,7 +130,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 			'label'           => &$GLOBALS['TL_LANG']['tl_member_content_archive']['mid'],
 			'inputType'       => 'select',
 			'options_callback' => array('tl_member_content_archive', 'getMembersAsOptions'),
-			'eval'            => array('mandatory' => true, 'tl_class' => 'w50'),
+			'eval'            => array('mandatory' => true, 'tl_class' => 'w50', 'chosen' => true),
 			'sql'             => "int(10) unsigned NOT NULL default '0'"
 		),
 		'teaser' => array
