@@ -198,6 +198,18 @@ if (!empty($arrOverridableMemberFields))
 	}
 
 	// add fields to palettes
+	// at first remove the fields already present in subpalettes
+	foreach ($arrDcaMember['subpalettes'] as $strPalette => $strFields)
+	{
+		foreach (explode(',', $strFields) as $strField)
+		{
+			if (in_array($strField, $arrOverridableMemberFields))
+			{
+				unset($arrOverridableMemberFields[array_search($strField, $arrOverridableMemberFields)]);
+			}
+		}
+	}
+
 	foreach ($arrDca['palettes'] as $strPalette => $strFields)
 	{
 		$arrDca['palettes'][$strPalette] = str_replace('{publish_legend}', '{override_legend},' .
