@@ -168,6 +168,43 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 	)
 );
 
+// add member dca to this dca in order to get the opportunity to override member fields in member content archives
+$arrDca = &$GLOBALS['TL_DCA']['tl_member_content_archive'];
+
+\Controller::loadDataContainer('tl_member');
+$arrDcaMember = $GLOBALS['TL_DCA']['tl_member'];
+
+/**
+ * Subpalettes
+ */
+$arrDca['palettes']['__selector__'] += array_map('tl_member_content_archive::fixFieldName', $arrDcaMember['palettes']['__selector__']);
+
+if (!is_array($arrDca['subpalettes']))
+	$arrDca['subpalettes'] = array();
+
+$arrDca['subpalettes'] += tl_member_content_archive::fixPalettes($arrDcaMember['subpalettes']);
+
+/**
+ * Palettes
+ */
+$arrOverridableMemberFields = deserialize(\Config::get('overridableMemberFields'));
+
+if (!empty($arrOverridableMemberFields))
+{
+	// add fields to dca
+	foreach ($arrOverridableMemberFields as $strField)
+	{
+		$arrDca['fields']['member' . ucfirst($strField)] = $arrDcaMember['fields'][$strField];
+	}
+
+	// add fields to palettes
+	foreach ($arrDca['palettes'] as $strPalette => $strFields)
+	{
+		$arrDca['palettes'][$strPalette] = str_replace('{publish_legend}', '{override_legend},' .
+				implode(',', array_map('tl_member_content_archive::fixFieldName',
+						$arrOverridableMemberFields)) . ';{publish_legend}', $arrDca['palettes'][$strPalette]);
+	}
+}
 
 class tl_member_content_archive extends \Backend
 {
@@ -279,6 +316,23 @@ class tl_member_content_archive extends \Backend
 		asort($arrOption);
 
 		return $arrOption;
+	}
+
+	public static function fixFieldName($strField)
+	{
+		return 'member' . ucfirst($strField);
+	}
+
+	public static function fixPalettes($arrPalettes)
+	{
+		$arrResult = array();
+		foreach ($arrPalettes as $strSelector => $strFields)
+		{
+			$arrFields = array_map('static::fixFieldName', explode(',', $strFields));
+			$arrResult[static::fixFieldName($strSelector)] = implode(',', $arrFields);
+		}
+
+		return $arrResult;
 	}
 
 }

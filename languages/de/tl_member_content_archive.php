@@ -22,6 +22,7 @@ $arrLang['published'] = array('Veröffentlichen', 'Wählen Sie diese Option zum 
  * Legends
  */
 $arrLang['general_legend'] = 'Allgemeine Einstellungen';
+$arrLang['override_legend'] = 'Mitgliederfelder überschreiben';
 $arrLang['publish_legend'] = 'Veröffentlichung';
 
 

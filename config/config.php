@@ -27,3 +27,8 @@ if (TL_MODE == 'BE') {
  */
 $GLOBALS['TL_MODELS']['tl_member_content_archive'] = '\HeimrichHannot\MemberContentArchives\MemberContentArchiveModel';
 $GLOBALS['TL_MODELS']['tl_member_content_archive_tag'] = '\HeimrichHannot\MemberContentArchives\MemberContentArchiveTagModel';
+
+/**
+ * Default Config
+ */
+$GLOBALS['TL_CONFIG']['overridableMemberFields'] = 'a:0:{}';
