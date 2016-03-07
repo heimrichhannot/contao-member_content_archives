@@ -32,3 +32,8 @@ $GLOBALS['TL_MODELS']['tl_member_content_archive_tag'] = '\HeimrichHannot\Member
  * Default Config
  */
 $GLOBALS['TL_CONFIG']['overridableMemberFields'] = 'a:0:{}';
+
+/**
+ * Hooks
+ */
+$GLOBALS['TL_HOOKS']['replaceInsertTags']['addMemberContentArchivesInsertTags'] = array('HeimrichHannot\MemberContentArchives\MemberContentArchives', 'addInsertTags');

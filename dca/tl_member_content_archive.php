@@ -93,8 +93,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 	),
 	'palettes' => array(
 		'__selector__' => array('type'),
-		'default' => '{general_legend},type,title,mid,teaser;{publish_legend},published;',
-		'tagged' => '{general_legend},type,tag,mid,teaser;{publish_legend},published;'
+		'default' => '{general_legend},type,tag,mid,teaser;{publish_legend},published;'
 	),
 	'fields'   => array
 	(
@@ -105,17 +104,6 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 		'tstamp' => array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
-		),
-		'type' => array
-		(
-			'label'     => &$GLOBALS['TL_LANG']['tl_member_content_archive']['type'],
-			'default'   => 'default',
-			'exclude'   => true,
-			'inputType' => 'select',
-			'options'   => array('default', 'tagged'),
-			'reference' => &$GLOBALS['TL_LANG']['tl_member_content_archive']['type'],
-			'eval'      => array('submitOnChange' => true, 'tl_class' => 'w50'),
-			'sql'       => "varchar(255) NOT NULL default ''"
 		),
 		'title' => array
 		(
@@ -130,7 +118,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 			'label'           => &$GLOBALS['TL_LANG']['tl_member_content_archive']['mid'],
 			'inputType'       => 'select',
 			'options_callback' => array('tl_member_content_archive', 'getMembersAsOptions'),
-			'eval'            => array('mandatory' => true, 'tl_class' => 'w50', 'chosen' => true),
+			'eval'            => array('mandatory' => true, 'tl_class' => 'w50', 'chosen' => true, 'includeBlankOption' => true),
 			'sql'             => "int(10) unsigned NOT NULL default '0'"
 		),
 		'teaser' => array
@@ -147,7 +135,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 			'label'            => &$GLOBALS['TL_LANG']['tl_member_content_archive']['tag'],
 			'inputType'        => 'select',
 			'options_callback' => array('tl_member_content_archive', 'getAvailableContentArchiveTags'),
-			'eval'             => array('mandatory' => true, 'chosen' => true, 'tl_class' => 'w50'),
+			'eval'             => array('mandatory' => true, 'chosen' => true, 'tl_class' => 'w50', 'includeBlankOption' => true),
 			'sql'              => "varchar(255) NOT NULL default ''",
 		),
 		'dateAdded' => array

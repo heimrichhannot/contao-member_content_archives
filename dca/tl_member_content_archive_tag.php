@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive_tag'] = array
 		)
 	),
 	'palettes' => array(
-		'default' => '{title_legend},title;'
+		'default' => '{title_legend},title,jumpTo;'
 	),
 	'fields'   => array
 	(
@@ -82,6 +82,14 @@ $GLOBALS['TL_DCA']['tl_member_content_archive_tag'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
+		'dateAdded' => array
+		(
+				'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
+				'sorting'                 => true,
+				'flag'                    => 6,
+				'eval'                    => array('rgxp'=>'datim', 'doNotCopy' => true),
+				'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
 		'title' => array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['tl_member_content_archive_tag']['title'],
@@ -90,14 +98,16 @@ $GLOBALS['TL_DCA']['tl_member_content_archive_tag'] = array
 			'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
 			'sql'       => "varchar(255) NOT NULL default ''"
 		),
-		'dateAdded' => array
+		'jumpTo' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
-			'sorting'                 => true,
-			'flag'                    => 6,
-			'eval'                    => array('rgxp'=>'datim', 'doNotCopy' => true),
-			'sql'                     => "int(10) unsigned NOT NULL default '0'"
-		),
+			'label'      => &$GLOBALS['TL_LANG']['tl_member_content_archive_tag']['jumpTo'],
+			'exclude'    => true,
+			'inputType'  => 'pageTree',
+			'foreignKey' => 'tl_page.title',
+			'eval'       => array('fieldType' => 'radio', 'tl_class' => 'w50 clr'),
+			'sql'        => "int(10) unsigned NOT NULL default '0'",
+			'relation'   => array('type' => 'hasOne', 'load' => 'eager')
+		)
 	)
 );
 

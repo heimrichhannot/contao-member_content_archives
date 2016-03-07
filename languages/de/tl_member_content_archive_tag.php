@@ -6,6 +6,7 @@ $arrLang = &$GLOBALS['TL_LANG']['tl_member_content_archive_tag'];
  * Fields
  */
 $arrLang['title'] = array('Titel', 'Geben Sie hier den Titel der Kategorie ein.');
+$arrLang['jumpTo'] = array('Weiterleitungsseite', 'Wählen Sie hier eine Weiterleitungsseite aus. Diese wird zur Generierung von InsertTags verwenden.');
 
 /**
  * Legends
