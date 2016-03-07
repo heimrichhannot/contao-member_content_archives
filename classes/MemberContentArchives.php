@@ -41,7 +41,10 @@ class MemberContentArchives {
 			{
 				if (($objMember = \MemberModel::findByPk($objMemberContentArchive->mid)) !== null)
 				{
-					return Url::generateFrontendUrl($objTag->jumpTo) . '/' . $objMember->alias;
+					$strIdAlias = ((\Config::get('useAutoItem') && !\Config::get('disableAlias')) ? '/' : '/items/') .
+							((!\Config::get('disableAlias') && $objMember->alias != '') ? $objMember->alias : $objMember->id);
+
+					return Url::generateFrontendUrl($objTag->jumpTo) . '/' . $strIdAlias;
 				}
 			}
 		}
