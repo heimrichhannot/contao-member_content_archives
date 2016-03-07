@@ -2,6 +2,7 @@
 
 namespace HeimrichHannot\MemberContentArchives;
 
+use HeimrichHannot\Haste\Dca\General;
 use HeimrichHannot\Haste\Util\Url;
 
 class MemberContentArchives {
@@ -41,10 +42,7 @@ class MemberContentArchives {
 			{
 				if (($objMember = \MemberModel::findByPk($objMemberContentArchive->mid)) !== null)
 				{
-					$strIdAlias = ((\Config::get('useAutoItem') && !\Config::get('disableAlias')) ? '/' : '/items/') .
-							((!\Config::get('disableAlias') && $objMember->alias != '') ? $objMember->alias : $objMember->id);
-
-					return Url::generateFrontendUrl($objTag->jumpTo) . '/' . $strIdAlias;
+					return Url::generateFrontendUrl($objTag->jumpTo) . '/' . General::getAliasIfAvailable($objMember);
 				}
 			}
 		}
