@@ -93,7 +93,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 	),
 	'palettes' => array(
 		'__selector__' => array('type'),
-		'default' => '{general_legend},type,tag,mid,teaser;{publish_legend},published;'
+		'default' => '{general_legend},type,tag,mid,title,teaser;{publish_legend},published;'
 	),
 	'fields'   => array
 	(
@@ -110,7 +110,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 			'label'     => &$GLOBALS['TL_LANG']['tl_member_content_archive']['title'],
 			'exclude'   => true,
 			'inputType' => 'text',
-			'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
+			'eval'      => array('maxlength' => 255, 'tl_class' => 'long'),
 			'sql'       => "varchar(255) NOT NULL default ''"
 		),
 		'mid' => array
