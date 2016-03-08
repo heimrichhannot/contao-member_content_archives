@@ -116,6 +116,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 		'mid' => array
 		(
 			'label'           => &$GLOBALS['TL_LANG']['tl_member_content_archive']['mid'],
+			'filter'          => true,
 			'inputType'       => 'select',
 			'options_callback' => array('tl_member_content_archive', 'getMembersAsOptions'),
 			'eval'            => array('mandatory' => true, 'tl_class' => 'w50', 'chosen' => true, 'includeBlankOption' => true),
@@ -133,6 +134,7 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 		'tag' => array
 		(
 			'label'            => &$GLOBALS['TL_LANG']['tl_member_content_archive']['tag'],
+			'filter'           => true,
 			'inputType'        => 'select',
 			'options_callback' => array('tl_member_content_archive', 'getAvailableContentArchiveTags'),
 			'eval'             => array('mandatory' => true, 'chosen' => true, 'tl_class' => 'w50', 'includeBlankOption' => true),
