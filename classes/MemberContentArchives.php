@@ -25,7 +25,10 @@ class MemberContentArchives {
 		{
 			switch ($arrParams[0]) {
 				case 'member_content_url':
-					return static::getMemberContentLink($arrParams[1]);
+					if (count($arrParams) >= 3)
+						return static::getMemberContentLinkByMemberAndTag($arrParams[1], $arrParams[2]);
+					else
+						return static::getMemberContentLink($arrParams[1]);
 					break;
 			}
 		}
@@ -45,6 +48,14 @@ class MemberContentArchives {
 					return Url::generateFrontendUrl($objTag->jumpTo) . '/' . General::getAliasIfAvailable($objMember);
 				}
 			}
+		}
+	}
+
+	public static function getMemberContentLinkByMemberAndTag($intMember, $intTag)
+	{
+		if (($objMemberContentArchive = MemberContentArchiveModel::findBy(array('mid=?', 'tag=?'), array($intMember, $intTag))) !== null)
+		{
+			return static::getMemberContentLink($objMemberContentArchive->id);
 		}
 	}
 
