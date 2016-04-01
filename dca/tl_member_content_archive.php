@@ -6,10 +6,6 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 	(
 		'dataContainer'     => 'Table',
 		'enableVersioning'  => true,
-		'onsubmit_callback' => array
-		(
-			'setDateAdded' => array('HeimrichHannot\\HastePlus\\Utilities', 'setDateAdded'),
-		),
 		'sql' => array
 		(
 			'keys' => array
@@ -140,12 +136,6 @@ $GLOBALS['TL_DCA']['tl_member_content_archive'] = array
 			'eval'             => array('mandatory' => true, 'chosen' => true, 'tl_class' => 'w50', 'includeBlankOption' => true),
 			'sql'              => "varchar(255) NOT NULL default ''",
 		),
-		'dateAdded' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['MSC']['dateAdded'],
-			'eval'                    => array('rgxp'=>'datim', 'doNotCopy' => true),
-			'sql'                     => "int(10) unsigned NOT NULL default '0'"
-		),
 		'published' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_member_content_archive']['published'],
@@ -163,6 +153,8 @@ $arrDca = &$GLOBALS['TL_DCA']['tl_member_content_archive'];
 
 \Controller::loadDataContainer('tl_member');
 $arrDcaMember = $GLOBALS['TL_DCA']['tl_member'];
+
+\HeimrichHannot\Haste\Dca\General::addDateAddedToDca('tl_member_content_archive');
 
 /**
  * Subpalettes
