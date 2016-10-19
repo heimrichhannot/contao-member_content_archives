@@ -6,7 +6,7 @@
 \HeimrichHannot\HastePlus\Arrays::insertInArrayByName($GLOBALS['BE_MOD']['accounts'], 'mgroup', array(
 		'member_content_archives' => array(
 			'tables' => array('tl_member_content_archive'),
-			'icon'   => 'http://fs.local/system/themes/flexible/images/article.gif'
+			'icon'   => 'system/themes/flexible/images/article.gif'
 		),
 		'member_content_archive_tags' => array(
 			'tables' => array('tl_member_content_archive_tag')
