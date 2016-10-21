@@ -159,7 +159,9 @@ $arrDcaMember = $GLOBALS['TL_DCA']['tl_member'];
 /**
  * Subpalettes
  */
-$arrDca['palettes']['__selector__'] += array_map('tl_member_content_archive::fixFieldName', $arrDcaMember['palettes']['__selector__']);
+$arrDca['palettes']['__selector__'] += array_map(function($val) {
+    return tl_member_content_archive::fixFieldName($val);
+}, $arrDcaMember['palettes']['__selector__']);
 
 if (!is_array($arrDca['subpalettes']))
 	$arrDca['subpalettes'] = array();
